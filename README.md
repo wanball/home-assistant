@@ -38,8 +38,8 @@ The following integrations are setup in the User Interface (UI) and may be a mis
 * [Yeelight RGBW E27 Smart LED Bulbs](http://www.gearbest.com/smart-lighting/pp_361555.html) *
 * [Yeelight E27 Smart LED Bulbs](http://www.gearbest.com/smart-light-bulb/pp_278478.html) *
 * [Broadlink RM Pro](https://www.gearbest.com/smart-home-controls/pp_255607.html?wid=1433363)*
-* [SONOFF Basic R3 WiFi (Flashed with ESPHome)](https://www.gearbest.com/smart-socket-plug/pp_009363914208.html?wid=1433363)*
-* [TP Link HS110](https://www.kasasmart.com/us/products/smart-plugs/kasa-smart-plug-energy-monitoring-hs110)*
+* [SONOFF Basic R3 WiFi (Flashed with ESPHome)](https://www.gearbest.com/smart-socket-plug/pp_009363914208.html?wid=1433363) *
+* [TP Link HS110](https://www.kasasmart.com/us/products/smart-plugs/kasa-smart-plug-energy-monitoring-hs110) *
 
 ### Xiaomi Ecosystem
 * [Xiaomi Multifunctional Gateway](https://www.gearbest.com/living-appliances/pp_344667.html)
@@ -53,4 +53,4 @@ The following integrations are setup in the User Interface (UI) and may be a mis
 ### Media
 * [Plex](https://www.plex.tv/) for media consumption along with [Plex component](https://home-assistant.io/components/media_player.plex/)
 * [Plex activity monitor](https://home-assistant.io/components/sensor.plex/) to track my PMS.
-* [Google Cast](https://store.google.com/us/product/chromecast)
+* [Chrome Cast](https://store.google.com/us/product/chromecast)

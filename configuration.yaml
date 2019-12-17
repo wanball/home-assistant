@@ -23,6 +23,7 @@ homeassistant:
 #https://home-assistant.io/docs/configuration/splitting_configuration/
 automation: !include_dir_merge_list automation/
 cloud: !include cloud.yaml
+climate: !include climate.yaml
 frontend: !include frontend.yaml
 ios: !include ios.yaml
 media_player: !include media_player.yaml
@@ -31,3 +32,42 @@ recorder: !include recorder.yaml
 script: !include scripts.yaml
 sensor: !include_dir_merge_list sensors/
 switch: !include_dir_merge_list switches/
+
+####################################################
+#                                                  #
+#                     GENERAL                      #
+#                                                  #
+####################################################
+
+#https://home-assistant.io/components/config/
+config:
+
+#https://www.home-assistant.io/hassio/
+hassio:
+
+#https://home-assistant.io/components/history/
+history:
+
+#https://home-assistant.io/components/http/
+http:
+
+#https://home-assistant.io/components/logger/
+logger:
+  default: error
+
+#https://www.home-assistant.io/lovelace/yaml-mode/
+lovelace:
+  mode: yaml
+
+#https://www.home-assistant.io/integrations/mobile_app/
+mobile_app:
+
+#https://home-assistant.io/components/sun/
+sun:
+
+#https://www.home-assistant.io/components/system_health/
+system_health:
+
+#https://www.home-assistant.io/integrations/google_translate/
+tts:
+  - platform: google_translate

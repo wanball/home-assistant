@@ -1,0 +1,299 @@
+####################################################
+#                                                  #
+#                  AUTOMATIONS                     #
+#                                                  #
+####################################################
+
+title: Automations
+icon: mdi:home-automation
+cards:
+  - type: entities
+    title: Automation Modes
+    show_header_toggle: false
+    entities:
+      - entity: input_boolean.vacation
+        icon: mdi:beach
+      - entity: input_boolean.guest
+        icon: mdi:home-account
+  - type: entities
+    title: Bedtime Notifications
+    show_header_toggle: false
+    entities:
+      - entity: automation.desktop_on_at_bedtime
+        name: Desktop on at Bedtime
+        icon: mdi:hotel
+      - entity: automation.garage_door_open_at_bedtime
+        name: Garage Door Open at Bedtime
+        icon: mdi:hotel
+      - entity: automation.living_room_lamps_on_at_bedtime
+        name: Lamps On At Bedtime Notification
+        icon: mdi:hotel
+  - type: entities
+    title: Automations For Lights
+    show_header_toggle: false
+    entities:
+      - entity: automation.turn_off_outside_lights
+        name: Turn Off Outside Lights - Sunrise
+        icon: mdi:lightbulb-outline
+      - entity: automation.turn_on_outside_lights
+        name: Turn on Outside Lights - Sunset
+        icon: mdi:lightbulb-outline
+      - entity: automation.open_back_door_increase_brightness
+        name: Open Back Doors Increase Brightness
+        icon: mdi:lightbulb-outline
+      - entity: automation.open_front_doors_increase_brightness
+        name: Open Front Doors Increase Brightness
+        icon: mdi:lightbulb-outline
+      - entity: automation.turn_on_living_room_lamps
+        name: Turn on Living Room Lamps - Sunset
+        icon: mdi:lightbulb-outline
+      - entity: automation.set_notification_bulb2_color
+        name: Set Notification Bulb 2 Color
+        icon: mdi:lightbulb-outline
+      - entity: automation.set_notification_bulb2_normal
+        name: Set Notification Bulb 2 Normal
+        icon: mdi:lightbulb-outline
+      - entity: automation.lamps_on_when_home
+        name: Lamps on When Home
+        icon: mdi:lightbulb-outline
+      - entity: automation.turn_off_living_room_lamps_at_midnight
+        name: Turn off Living Room Lamps - Midnight
+        icon: mdi:lightbulb-outline
+      - entity: automation.interior_garage_door_open_light_on
+        name: Interior Garage Door Open Light On
+        icon: mdi:lightbulb-outline
+      - entity: automation.turn_off_interior_garage_light_after_5
+        name: Turn Off Interior Garage Light After 5 Min
+        icon: mdi:lightbulb-outline
+  - type: entities
+    title: Security Automations
+    show_header_toggle: false
+    entities:
+      - entity: automation.front_door_opened_when_away
+        name: Front Door Opened When Away
+        icon: mdi:shield-home
+      - entity: automation.back_door_opened_when_away
+        name: Back Door Opened When Away
+        icon: mdi:shield-home
+      - entity: automation.interior_garage_door_opened_when_away
+        name: Inside Garage Door Opened When Away
+        icon: mdi:shield-home
+      - entity: automation.exterior_garage_door_opened_when_away
+        name: Outside Garage Door Opened When Away
+        icon: mdi:shield-home
+      - entity: automation.exterior_garage_door_left_open_when_away
+        name: Outside Garage Door Left Open When Away
+        icon: mdi:shield-home
+      - entity: automation.doorbell_pressed
+        name: Doorbell Pressed
+        icon: mdi:bell
+  - type: entities
+    title: Network Security Automations
+    show_header_toggle: false
+    entities:
+      - entity: automation.desktop_pc_on_when_away
+        name: Desktop PC on When Away
+        icon: mdi:windows
+      - entity: automation.send_notification_upon_failed_login_attempt
+        name: Failed HA Login Attempt Notification
+        icon: mdi:lock-outline
+      - entity: automation.notify_if_new_devices
+        name: Notify if New Devices
+        icon: mdi:new-box
+  - type: entities
+    title: Home Assistant Automations
+    show_header_toggle: false
+    entities:
+      - entity: automation.home_assistant_started
+        name: Home Assistant Started
+        icon: mdi:home-assistant
+      - entity: automation.home_assistant_stopped
+        name: Home Assistant Stopped
+        icon: mdi:home-assistant
+      - entity: automation.update_template_sensors
+        name: Update Template Sensors
+        icon: mdi:update
+  - type: entities
+    title: Other Automations
+    show_header_toggle: false
+    entities:
+      - entity: automation.low_battery_adams_phone
+        name: Low iPhone Battery
+        icon: mdi:battery-charging-30
+      - entity: automation.holiday_and_birthday_notification
+        name: Holiday/Birthday Notification
+        icon: mdi:gift
+      - entity: automation.hvac_record
+        name: Long Term HVAC Record
+        icon: mdi:timetable
+  - type: entities
+    title: Climate Automations
+    show_header_toggle: false
+    entities:
+      - entity: automation.set_thermostat_away_mode_when_leaving
+        name: Set thermostat Away Mode When Leaving
+        icon: mdi:home-outline
+      - entity: automation.set_thermostat_away_mode_at_1500
+        name: Turn Off thermostat Away Mode at 1500
+        icon: mdi:home-outline
+      - entity: automation.set_thermostat_away_mode_at_1600
+        name: Turn Off thermostat Away Mode at 1600
+        icon: mdi:home-outline
+      - entity: automation.turn_off_away_when_home
+        name: Turn Off thermostat Away Mode When Home
+        icon: mdi:home-outline
+      - entity: automation.set_thermostat_temperature_2200
+        name: Set Overnight Temperature
+        icon: mdi:weather-night
+      - entity: automation.set_thermostat_temperature_0500
+        name: Set Morning Temperature
+        icon: mdi:weather-sunset
+      - entity: automation.turn_on_bedroom_fan_with_hvac
+        name: Turn on Bedroom Fan with HVAC
+        icon: mdi:fan
+      - entity: automation.turn_off_bedroom_fan_with_hvac
+        name: Turn off Bedroom Fan with HVAC
+        icon: mdi:fan
+  - type: entities
+    title: Feed the dog Automations
+    show_header_toggle: false
+    entities:
+      - entity: automation.dog_has_been_fed_evening
+        name: Dog has been fed - evening
+        icon: mdi:paw
+      - entity: automation.dog_has_been_fed_morning
+        name: Dog has been fed - morning
+        icon: mdi:paw
+      - entity: automation.reset_feed_the_dog_notifications
+        name: Reset feed the dog automations
+        icon: mdi:paw
+      - entity: automation.feed_the_dog_evening
+        name: Feed the dog evening
+        icon: mdi:paw
+      - entity: automation.feed_the_dog_morning
+        name: Feed the dog morning
+        icon: mdi:paw
+  - type: entities
+    title: Leaving Automations
+    show_header_toggle: false
+    entities:
+      - entity: automation.desktop_on_when_leaving
+        name: Desktop On When Leaving
+        icon: mdi:windows
+      - entity: automation.media_center_on_when_leaving
+        name: Media Center On When leaving
+        icon: mdi:television-classic
+      - entity: automation.leaving_home
+        name: Leaving Home Tun off lights
+        icon: mdi:home-circle
+  - type: entities
+    title: UPS Automations
+    show_header_toggle: false
+    entities:
+      - entity: automation.power_outage
+        name: Power Outage
+        icon: mdi:power-plug
+      - entity: automation.power_restored
+        name: Power Restored
+        icon: mdi:power-plug
+  - type: entities
+    title: Vacation Mode Automations
+    show_header_toggle: false
+    entities:
+      - entity: automation.turn_off_vacation_mode
+        name: Turn Off Vacation Mode
+        icon: mdi:beach
+      - entity: automation.turn_on_vacation_mode
+        name: Turn On Vacation Mode
+        icon: mdi:beach
+  - type: entities
+    title: Maintenance Reminder Automations
+    show_header_toggle: false
+    entities:
+      - entity: automation.water_filter_maintenance_reminder
+        name: Water Filter Maintenance
+        icon: mdi:water
+      - entity: automation.trash_day_reminder
+        name: Trash Day
+        icon: mdi:delete-empty
+      - entity: automation.furnace_filter_reminder
+        name: Furnace Filter
+        icon: mdi:fire
+      - entity: automation.belle_flea_tick_and_heartworm_reminder
+        name: Belle Flea Tick and Heartworm
+        icon: mdi:paw
+      - entity: automation.water_softener_reminder
+        name: Water Softener
+        icon: mdi:water-pump
+      - entity: automation.humidifier_maintenance_reminder
+        name: Humidifier Maintenance
+        icon: mdi:water-percent
+  - type: entities
+    title: Morning Briefings
+    show_header_toggle: false
+    entities:
+      - entity: automation.morning_briefing_adam
+        name: Adam's Morning Briefing
+        icon: mdi:weather-sunset
+      - entity: automation.morning_briefing_amy
+        name: Amy's Morning Briefing
+        icon: mdi:weather-sunset
+  - type: entities
+    title: Github Automations
+    show_header_toggle: false
+    entities:
+      - entity: automation.new_home_assitant_version
+        name: New home Assistant Version
+        icon: mdi:home-assistant
+      - entity: automation.new_github_star
+        name: New Github Star
+        icon: mdi:star-circle
+      - entity: automation.new_github_fork
+        name: New Github Fork
+        icon: mdi:directions-fork
+      - entity: automation.new_github_subscriber
+        name: New Github Subscriber
+        icon: mdi:github-circle
+      - entity: automation.github_issues
+        name: Github Issues
+        icon: mdi:alert-circle
+  - type: entities
+    show_header_toggle: false
+    title: Watchdogs
+    entities:
+      - entity: automation.restart_nut_add_on
+        name: Nut Add-on Watchdog
+        icon: mdi:alert-decagram-outline
+      - entity: automation.notify_if_ha_device_offline
+        name: Notify if HA device Offline
+        icon: mdi:home-assistant
+      - entity: automation.notify_if_zwave_device_is_dead
+        name: Notify if Zwave device is Dead
+        icon: mdi:home-assistant
+      - entity: automation.notify_if_yeelight_offline
+        name: Notify if Yeelight Offline
+        icon: mdi:lightbulb-outline
+      - entity: automation.addon_stopped
+        name: Addon Stopped
+        icon: mdi:home-assistant
+      - entity: automation.disk_use_alarm
+        name: Hass.io Disk Use Alarm
+        icon: mdi:harddisk
+      - entity: automation.sensor_low_battery
+        name: Low Sensor Battery
+        icon: mdi:battery-charging-wireless-10
+      - entity: automation.notify_if_unifi_gateway_alert
+        name: Notify if Unifi Gateway Alert
+        icon: mdi:alert
+      - entity: automation.notify_if_network_device_issue
+        name: Network Device Issue Notification
+        icon: mdi:help-network
+      - entity:  automation.notify_if_unifi_firmware_update_available
+        name: Network Device Firmware Update Available
+        icon: mdi:check-network
+
+####################################################
+#                                                  #
+#          END OF CONFIGURATION FILE               #
+#                                                  #
+####################################################

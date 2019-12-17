@@ -1,0 +1,37 @@
+####################################################
+#                                                  #
+#                   RESOURCES                      #
+#                                                  #
+####################################################
+
+resources:
+  #https://github.com/MizterB/lovelace-secondaryinfo-entity-row
+  - url: /local/secondaryinfo-entity-row.js?v=0.1
+    type: module
+  #https://github.com/thomasloven/lovelace-card-tools
+  - url: /local/card-tools.js
+    type: js
+  #https://github.com/custom-cards/vertical-stack-in-card
+  - url: /local/vertical-stack-in-card.js?v=v0.1.1
+    type: js
+  #https://github.com/maykar/compact-custom-header
+  - url: /local/compact-custom-header.js?v=0.0.1
+    type: module
+
+cch:
+  options: clock
+
+title: Home
+background: var(--background-image)
+views:
+  - !include lovelace/rooms.yaml
+  - !include lovelace/switches.yaml
+  - !include lovelace/devicestatus.yaml
+  - !include lovelace/ha.yaml
+  - !include lovelace/automations.yaml
+
+####################################################
+#                                                  #
+#          END OF CONFIGURATION FILE               #
+#                                                  #
+####################################################

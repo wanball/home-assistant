@@ -1,0 +1,194 @@
+####################################################
+#                                                  #
+#                    ROOMS VIEW                    #
+#                                                  #
+####################################################
+
+title: Rooms
+path: home
+icon: mdi:home
+cards:
+  - type: custom:vertical-stack-in-card
+    cards: 
+      - type: glance
+        title: Door Status
+        entities:
+          - entity: sensor.gehingepinsensor2
+            name: Int. Garage
+            icon: mdi:door
+          - entity: sensor.backdoorstatus
+            name: Back
+            icon: mdi:door
+          - entity: sensor.garagedoorstatus
+            name: Garage
+            icon: mdi:garage
+          - entity: sensor.gehingepinsensor1
+            name: Front
+            icon: mdi:door
+        columns: 4
+      - type: entities
+        entities: 
+          - entity: cover.garage_door
+  - type: custom:vertical-stack-in-card
+    title: Entertainment Center
+    cards: 
+      - type: horizontal-stack
+        cards:
+          - type: entity-button
+            theme: midnightyellow
+            entity: switch.tvstate
+            name: TV - Power
+            icon: mdi:television
+          - type: entity-button
+            theme: midnightyellow
+            entity: switch.tvtv
+            name: TV - Input 
+            icon: mdi:television
+          - type: entity-button
+            theme: midnightyellow
+            entity: switch.receiverstate
+            icon: mdi:speaker
+            name: Amp - Power
+      - type: horizontal-stack
+        cards:
+          - type: entity-button
+            theme: midnightyellow
+            entity: script.volumeup
+            name: Volume Up
+            icon: mdi:volume-plus
+            tap_action:
+              action: call-service
+              service: script.volumeup
+          - type: entity-button
+            theme: midnightyellow
+            entity: switch.receivermute
+            name: Mute
+            icon: mdi:volume-mute
+          - type: entity-button
+            theme: midnightyellow
+            entity: script.volumedown
+            name: Volume Down
+            icon: mdi:volume-minus
+            tap_action:
+              action: call-service
+              service: script.volumedown
+  - type: custom:vertical-stack-in-card
+    title: Living Room
+    cards: 
+      - type: horizontal-stack
+        cards:
+          - type: entity-button
+            theme: midnightyellow
+            entity: switch.basic1
+            name: Livingroom
+            icon: mdi:lightbulb-outline
+          - type: entity-button
+            theme: midnightyellow
+            entity: switch.desktop_switch
+            name: Desktop
+            icon: mdi:desktop-tower
+          - type: entity-button
+            theme: midnightyellow
+            entity: light.yeelightrgb2
+            name: Notification
+            icon: mdi:lightbulb-outline
+            tap_action: 
+              action: toggle
+            hold_action:
+              action: call-service
+              service: script.normallight
+      - type: horizontal-stack
+        cards:
+          - type: entity-button
+            theme: midnightyellow
+            entity: switch.kuled1
+            name: Bedroom Fan
+            icon: mdi:fan
+          - type: entity-button
+            theme: midnightyellow
+            entity:  light.bedroom_lights
+            name: Bedroom
+            icon: mdi:lightbulb-outline
+          - type: entity-button
+            theme: midnightyellow
+            entity: switch.kuled2
+            name: Nursery Fan
+            icon: mdi:fan
+  - type: vertical-stack
+    cards:
+      - type: conditional
+        conditions:
+          - entity: climate.linear_heating
+            state: "heat"
+        card:
+          type: entities
+          show_header_toggle: false
+          title: Thermostat
+          entities:
+            - entity: climate.linear_heating
+              name: Thermostat
+      - type: conditional
+        conditions:
+          - entity: climate.linear_cooling
+            state: "cool"
+        card:
+          type: entities
+          show_header_toggle: false
+          title: Thermostat
+          entities:
+            - entity: climate.linear_cooling
+              name: Thermostat
+      # - type: entities
+      #   show_header_toggle: false
+      #   title: Temperature & Humidity
+      #   entities:
+      #     - entity: sensor.th161_temperature
+      #       name: Upstairs Temperature
+      #       icon: mdi:thermometer-lines
+      #     - entity:  sensor.th161_humidity
+      #       name: Upstairs Humidity
+      #       icon: mdi:water-percent
+      - type: conditional
+        conditions:
+          - entity: climate.linear_cooling
+            state: "cool"
+        card:
+          type: entities
+          show_header_toggle: false
+          title: HVAC Runtime
+          entities:
+            - entity: sensor.cooling_hours_today
+              icon: mdi:progress-clock
+            - entity: sensor.cooling_hours_yesterday
+              icon: mdi:progress-clock
+            - entity: sensor.cooling_hours_two_days_ago
+              icon: mdi:progress-clock
+      - type: conditional
+        conditions:
+          - entity: climate.linear_heating
+            state: "heat"
+        card:
+          type: entities
+          show_header_toggle: false
+          title: HVAC Runtime
+          entities:
+            - entity: sensor.heating_hours_today
+              icon: mdi:progress-clock
+            - entity: sensor.heating_hours_yesterday
+              icon: mdi:progress-clock
+            - entity: sensor.heating_hours_two_days_ago
+              icon: mdi:progress-clock
+  - type: weather-forecast
+    entity: weather.dark_sky
+  - type: vertical-stack
+    cards:
+      - type: media-control
+        entity: media_player.fire_tv
+      - type: media-control
+        entity: media_player.samsung_tv_remote
+
+####################################################
+#                                                  #
+#          END OF CONFIGURATION FILE               #
+#                                                  #
+####################################################

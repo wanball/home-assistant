@@ -1,0 +1,155 @@
+####################################################
+#                                                  #
+#                   SWITCHES                       #
+#                                                  #
+####################################################
+
+title: Switches
+icon: mdi:light-switch
+path: switches
+cards:
+  - type: entities
+    title: Bedroom Lights
+    show_header_toggle: false
+    entities:
+      - entity: light.bedroom_lights
+        name: Bedroom Lights   
+      - entity: light.tradfri_bulb_e26_ws_opal_980lm_3
+        name: Amy's Bedside
+      - entity: light.tradfri_bulb_e26_ws_opal_980lm_2_2
+        name: Adam's Bedside
+  - type: entities
+    title: Yeelights
+    show_header_toggle: false
+    entities:
+      - entity: light.yeelight1
+        name: Front Porch
+      - entity: light.yeelight3
+        name: Garage Right
+      - entity: light.yeelight4
+        name: Garage Left
+      - entity: light.yeelight2
+        name: Back Porch
+      - entity: light.yeelight5
+        name: Interior Garage Light
+      - entity: light.yeelightrgb2
+        name: Notification Light
+      - entity: script.normallight
+        name: Script - Normal Light
+        icon: mdi:mdi:lightbulb
+      - entity: input_select.notification_bulb2_color
+        name: Notification Light Color
+  - type: entities
+    title: Broadlink IR Switches
+    show_header_toggle: false
+    entities:
+      - entity: switch.receiverstate
+        name: Receiver-Power
+        icon: mdi:speaker
+      - entity: switch.tvstate
+        name: TV - Power
+        icon: mdi:television
+      - entity: switch.receivermute
+        name: Receiver-Mute
+        icon: mdi:volume-mute
+      - entity: switch.receivervideo1
+        name: Receiver - Video 1
+        icon: mdi:television
+      - entity: switch.receivervideo2
+        name: Receiver - Video 2
+        icon: mdi:speaker
+      - entity: switch.receivervoldwn
+        name: Receiver - Volume Down
+        icon: mdi:volume-minus
+      - entity: switch.receivervolup
+        name: Receiver - Voume Up
+        icon: mdi:volume-plus
+      - entity: switch.tvhdmi
+        name: TV - HDMI
+        icon: mdi:video-input-hdmi
+      - entity: switch.tvtv
+        name: TV - Input Select
+        icon: mdi:television
+      - entity: script.volumeup
+        name: Script - Volume Up
+        icon: mdi:volume-plus
+      - entity: script.volumedown
+        name: Script - Volume Down
+        icon: mdi:volume-minus
+  - type: entities
+    title: Sonoff Switches
+    show_header_toggle: false
+    entities:
+      - entity: switch.basic1
+        name: Sonoff Basic 1
+        icon: mdi:toggle-switch
+        type: "custom:secondaryinfo-entity-row"
+        secondary_info: "Living Room Lamps"
+      - entity: switch.th161
+        name: Sonoff TH16
+        icon: mdi:toggle-switch
+        type: "custom:secondaryinfo-entity-row"
+      - entity: switch.pow1
+        name: Sonoff POW 1
+        icon: mdi:speaker-wireless
+        type: "custom:secondaryinfo-entity-row"
+        secondary_info: "Receiver"
+      - entity: sensor.pow1_energy
+        name: kWh
+        icon: mdi:chart-line
+      - entity: sensor.pow1_power
+        name: Watts
+        icon: mdi:power-plug
+      - entity: sensor.pow1_voltage
+        name: Volts
+        icon: mdi:power-socket-us
+      - entity: sensor.pow1_current
+        name: Amps
+        icon: mdi:flash-circle
+      - entity: switch.pow2
+        name: Sonoff POW 2
+        icon: mdi:television-classic
+        type: "custom:secondaryinfo-entity-row"
+        secondary_info: "Television"
+      - entity: sensor.pow2_energy
+        name: kWh
+        icon: mdi:chart-line
+      - entity: sensor.pow2_power
+        name: Watts
+        icon: mdi:power-plug
+      - entity: sensor.pow2_voltage
+        name: Volts
+        icon: mdi:power-socket-us
+      - entity: sensor.pow2_current
+        name: Amps
+        icon: mdi:flash-circle
+  - type: entities
+    title: Kuled Switches
+    show_header_toggle: false
+    entities:
+      - entity: switch.kuled1
+        name: Kuled 1
+        icon: mdi:light-switch
+        type: "custom:secondaryinfo-entity-row"
+        secondary_info: "Bedroom Fan"
+      - entity: switch.kuled2
+        name: Kuled 2
+        icon: mdi:light-switch
+        type: "custom:secondaryinfo-entity-row"
+        secondary_info: "Nursery Fan"
+  - type: entities
+    title: Computer Switches
+    show_header_toggle: false
+    entities:
+      - entity: switch.desktop_switch
+        name: Desktop
+        icon: mdi:desktop-tower
+      - entity: switch.lenovo_switch
+        name: Lenovo Laptop
+        icon: mdi:windows
+
+####################################################
+#                                                  #
+#          END OF CONFIGURATION FILE               #
+#                                                  #
+####################################################
