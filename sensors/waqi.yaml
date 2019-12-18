@@ -1,0 +1,13 @@
+#https://home-assistant.io/components/sensor/
+
+####################################################
+#                                                  #
+#            World Air Quality Index               #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/integrations/waqi/
+  - platform: waqi
+    token: !secret waqi_api
+    locations:
+      - bangkok

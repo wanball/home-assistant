@@ -1,0 +1,25 @@
+#https://home-assistant.io/components/sensor/
+
+####################################################
+#                                                  #
+#                    Dark Sky                      #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/integrations/darksky/
+  - platform: darksky
+    api_key: !secret darksky_api
+    monitored_conditions:
+      - summary
+      - daily_summary
+      - hourly_summary
+      - temperature
+      - uv_index
+      - precip_probability
+      - wind_speed
+      - cloud_cover
+      - pressure
+      - ozone
+    scan_interval:
+      minutes: 20
+      

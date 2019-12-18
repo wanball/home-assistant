@@ -149,3 +149,12 @@ asuswrt:
 #https://www.home-assistant.io/integrations/ifttt/
 ifttt:
   key: !secret ifttt_key
+
+####################################################
+#                    WEATHER                       #
+####################################################
+weather:
+  - platform: darksky
+    api_key: !secret darksky_api
+    name: Weather
+    mode: daily

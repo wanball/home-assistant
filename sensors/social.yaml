@@ -1,0 +1,25 @@
+#https://www.home-assistant.io/integrations/#social
+
+####################################################
+#                                                  #
+#                      Steam                       #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/integrations/steam_online/
+  - platform: steam_online
+    api_key: !secret steam_api
+    accounts:
+      - !secret steam_id
+
+####################################################
+#                                                  #
+#                    last.fm                       #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/integrations/lastfm/
+  - platform: lastfm
+    api_key: !secret 7117872cce32805d5754ffccfec603d9
+    users:
+      - !secret lastfm_id      

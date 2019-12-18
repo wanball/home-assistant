@@ -54,3 +54,6 @@ The following integrations are setup in the User Interface (UI) and may be a mis
 * [Plex](https://www.plex.tv/) for media consumption along with [Plex component](https://home-assistant.io/components/media_player.plex/)
 * [Plex activity monitor](https://home-assistant.io/components/sensor.plex/) to track my PMS.
 * [Chrome Cast](https://store.google.com/us/product/chromecast)
+
+### Weather
+* [DarkSky](https://darksky.net/dev/) for weather data and forecasts
