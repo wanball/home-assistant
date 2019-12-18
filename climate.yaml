@@ -1,0 +1,27 @@
+####################################################
+#                                                  #
+#                   CLIMATE                        #
+#                                                  #
+####################################################
+
+#https://github.com/smartHomeHub/SmartIR/blob/master/docs/CLIMATE.md
+  - platform: smartir
+    name: Living Room AC
+    unique_id: living_room_ac
+    device_code: 1120
+    controller_data: !secret broadlink_rm_pro_ip
+    temperature_sensor: sensor.temperature
+    humidity_sensor: sensor.humidity
+
+#https://github.com/syssi/xiaomi_airconditioningcompanion
+  - platform: xiaomi_miio_airconditioningcompanion
+    name: Aqara Air Conditioning Companion
+    host: !secret aqara_host_ip
+    token: !secret aqara_token
+    target_sensor: sensor.temperature_158d0001f53706
+    scan_interval: 60
+####################################################
+#                                                  #
+#           END OF CONFIGURATION FILE              #
+#                                                  #
+####################################################

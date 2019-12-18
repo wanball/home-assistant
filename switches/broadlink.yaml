@@ -1,0 +1,34 @@
+
+#https://home-assistant.io/components/switch/
+
+####################################################
+#                                                  #
+#             BROADLINK IR SWITCHES                #
+#                                                  #
+####################################################
+
+#https://home-assistant.io/components/switch.broadlink/
+  - platform: broadlink
+    host: !secret broadlink_mp1_ip
+    mac: !secret broadlink_mp1_mac
+    type: mp1
+    friendly_name: 'MP1'
+    slots:
+      # friendly name of slots - optional
+      # if not set, slot name will be switch's friendly_name + 'slot {slot_index}'. e.g 'MP1 slot 1'
+      slot_1: 'TV slot'
+      slot_2: 'Xbox slot'
+      slot_3: 'Fan slot'
+      slot_4: 'Speaker slot'
+
+  - platform: broadlink
+    host: !secret broadlink_rm_pro_ip
+    mac: !secret broadlink_rm_pro_mac
+    timeout: 15
+    retry: 5
+
+####################################################
+#                                                  #
+#           END OF CONFIGURATION FILE              #
+#                                                  #
+####################################################

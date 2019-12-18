@@ -1,0 +1,108 @@
+############################################################
+#
+# Home Assistant Speech Processing and Last Message Package
+# Send notifications to the ChromeCast Homes during normal hours and only when we are home! Call like this:
+  # action:
+    # service: script.speech_processing
+    # data_template:
+    #   speech_message:
+    
+# To force change second section to: 'service: script.speech_processing'
+# Original Repo : https://github.com/CCOSTAN/Home-AssistantConfig
+############################################################
+
+homeassistant:
+  customize:
+    input_boolean.lastmsg:
+      friendly_name: 'Repeat Message'
+      icon: mdi:repeat-once
+
+input_boolean:
+  lastmsg:
+    name: Last Message
+    initial: off
+  guest_mode:
+    name: Guest Mode
+    initial: off
+    icon: mdi:account-alert
+  alert_mode:
+    name: Alert Mode
+    initial: off
+    icon: mdi:alert-octagram
+  speech_notifications:
+    name: Speech Notifications
+    initial: on
+    icon: mdi:text-to-speech
+
+script:
+  speech_processing:
+    sequence:
+      - service: mqtt.publish
+        data_template:
+          topic: 'broadcast/lastmsg'
+          payload: 'This Message is from {{now().strftime("%I")}}:{{now().strftime("%M")}} {{now().strftime("%p")}}. {{speech_message}}'
+          retain: true
+      - condition: and
+        conditions:
+          - condition: or
+            conditions:
+              - condition: state
+                entity_id: group.family_presence
+                state: 'home'
+              - condition: state
+                entity_id: input_boolean.guest_mode
+                state: 'on'
+          - condition: or
+            conditions:
+              - condition: time
+                after: '08:00:00'
+                before: '20:00:00'
+              - condition: state
+                entity_id: input_boolean.alert_mode
+                state: 'on'
+          - condition: state
+            entity_id: input_boolean.speech_notifications
+            state: 'on'
+      - service: notify.google_assistant_broadcast
+        data_template:
+          message: '{{speech_message}}'
+      - service: input_boolean.turn_off
+        entity_id:
+          - input_boolean.alert_mode
+          - input_boolean.lastmsg
+  speech_processing_force:
+    sequence:
+      - service: mqtt.publish
+        data_template:
+          topic: 'broadcast/lastmsg'
+          payload: 'This Message is from {{now().strftime("%I")}}:{{now().strftime("%M")}} {{now().strftime("%p")}}. {{speech_message}}'
+          retain: true
+      - service: notify.google_assistant_broadcast
+        data_template:
+          message: '{{speech_message}}'
+      - service: input_boolean.turn_off
+        entity_id:
+          - input_boolean.alert_mode
+          - input_boolean.lastmsg
+sensor:
+  - platform: mqtt
+    state_topic: "broadcast/lastmsg"
+    name: "Last Message"
+    
+##############################################################################
+###  Automations -
+##############################################################################
+
+automation:
+  - alias: 'Repeat Last Message'
+    trigger:
+      - platform: state
+        entity_id: input_boolean.lastmsg
+        to: 'on'
+    action:
+      - service: notify.google_assistant_broadcast
+        data_template:
+          message: '{{states.sensor.last_message.state}}'
+      - service: input_boolean.turn_off
+        entity_id:
+          - input_boolean.lastmsg

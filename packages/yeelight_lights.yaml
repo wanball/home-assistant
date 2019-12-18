@@ -1,0 +1,155 @@
+###############################################################################
+#   @author         :   Wannarut Bunsang
+#   @date           :   18/12/2019
+#   @package        :   Yeelight Lights
+#   @description    :   
+#   @url            :   https://www.home-assistant.io/integrations/yeelight/
+###############################################################################
+homeassistant:
+  customize:
+    light.peamai_bedside:
+      icon: mdi:lamp
+    light.ceiling_lamp_1:
+      icon: mdi:lamp
+    light.ceiling_lamp_3:
+      icon: mdi:lamp
+
+yeelight:
+  devices:
+    !secret yeelink_blub_1:
+      model: color2
+      name: Ceiling Lamp 1
+    !secret yeelink_blub_2:
+      model: color2
+      name: Ceiling Lamp 2
+    !secret yeelink_blub_3:
+      model: color2
+      name: Ceiling Lamp 3
+    !secret yeelink_blub_4:
+      model: color1
+      name: Ceiling Lamp 4
+    !secret yeelink_blub_5:
+      model: color1
+      name: Peamai Bedside
+      transition: 1000
+
+###############################################################################
+#                               Scene                                         #
+###############################################################################
+
+scene:
+  - name: Living Room Zone 1 Default
+    entities:
+      light.ceiling_lamp_1:
+        state: true
+        xy_color: [0.621, 0.367]
+        brightness: 15
+      light.ceiling_lamp_2:
+        state: true
+        xy_color: [0.621, 0.367]
+        brightness: 15
+  - name: Living Room Zone 2 Default
+    entities:
+      light.ceiling_lamp_3:
+        state: true
+        xy_color: [0.621, 0.367]
+        brightness: 15
+      light.ceiling_lamp_4:
+        state: true
+        xy_color: [0.621, 0.367]
+        brightness: 15
+  - name: Living Room Movie
+    entities:
+      light.ceiling_lamp_1:
+        state: true
+        xy_color: [0.51, 0.239]
+        brightness: 5
+      light.ceiling_lamp_2:
+        state: true
+        xy_color: [0.51, 0.239]
+        brightness: 5
+  - name: Living Room Romantic
+    entities:
+      light.ceiling_lamp_1:
+        state: true
+        xy_color: [0.51, 0.239]
+        brightness: 5
+      light.ceiling_lamp_2:
+        state: true
+        xy_color: [0.51, 0.239]
+        brightness: 5
+      light.ceiling_lamp_3:
+        state: true
+        xy_color: [0.51, 0.239]
+        brightness: 5
+      light.ceiling_lamp_4:
+        state: true
+        xy_color: [0.51, 0.239]
+        brightness: 5
+
+###############################################################################
+#                               Automations                                   #
+###############################################################################
+automation: 
+- alias: Turn on light in Living Room Zone 1 on single press
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.switch_158d000xxxxxc2
+      click_type: single
+  condition:
+    condition: state
+    entity_id: light.ceiling_lamp_1
+    state: 'off'
+  action:
+    service: scene.turn_on
+    entity_id: scene.living_room_zone_1_default
+
+- alias: Turn on light in Living Room Zone 2 on single press
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.switch_158d000xxxxxc2
+      click_type: single
+  condition:
+    condition: state
+    entity_id: light.ceiling_lamp_3
+    state: 'off'
+  action:
+    service: scene.turn_on
+    entity_id: scene.living_room_zone_2_default
+    
+- alias: Turn off light in Living Room Zone 1 on single press
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.switch_158d000xxxxxc2
+      click_type: single
+  condition:
+    condition: state
+    entity_id: light.ceiling_lamp_1
+    state: 'on'
+  action:
+    service: light.turn_off
+    entity_id: 
+    - light.ceiling_lamp_1
+    - light.ceiling_lamp_2
+
+- alias: Turn off light in Living Room Zone 2 on single press
+  trigger:
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.switch_158d000xxxxxc2
+      click_type: single
+  condition:
+    condition: state
+    entity_id: light.ceiling_lamp_3
+    state: 'on'
+  action:
+    service: light.turn_off
+    - light.ceiling_lamp_3
+    - light.ceiling_lamp_4

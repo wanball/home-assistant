@@ -7,13 +7,15 @@
 #https://home-assistant.io/docs/configuration/basic/
 homeassistant:
   name: Home
-  latitude: !secret latitude
-  longitude: !secret longitude
-  elevation: 244
-  unit_system: imperial
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  elevation: !secret home_elevation
+  unit_system: metric
   time_zone: !secret time_zone
   whitelist_external_dirs:
-    - /config
+    - /config               # for filesize sensor
+    - /tmp                  # for camera snapshots
+    - /dev                  # for camera snapshots
     - /share
 
 ####################################################
@@ -28,6 +30,7 @@ frontend: !include frontend.yaml
 ios: !include ios.yaml
 media_player: !include media_player.yaml
 notify: !include notification.yaml
+packages: !include_dir_named packages # Include Packages
 recorder: !include recorder.yaml
 script: !include scripts.yaml
 sensor: !include_dir_merge_list sensors/
@@ -42,6 +45,13 @@ switch: !include_dir_merge_list switches/
 #https://home-assistant.io/components/config/
 config:
 
+#https://www.home-assistant.io/integrations/discovery/
+discovery:
+  ignore:
+  - yeelight
+  - plex_mediaserver
+  - google_cast
+
 #https://www.home-assistant.io/hassio/
 hassio:
 
@@ -50,6 +60,7 @@ history:
 
 #https://home-assistant.io/components/http/
 http:
+  base_url: !secret url
 
 #https://home-assistant.io/components/logger/
 logger:
@@ -62,6 +73,9 @@ lovelace:
 #https://www.home-assistant.io/integrations/mobile_app/
 mobile_app:
 
+#https://github.com/smartHomeHub/SmartIR
+smartir:
+
 #https://home-assistant.io/components/sun/
 sun:
 
@@ -71,3 +85,67 @@ system_health:
 #https://www.home-assistant.io/integrations/google_translate/
 tts:
   - platform: google_translate
+    language: 'th'
+
+####################################################
+#                    GROUP                         #
+####################################################
+
+#https://www.home-assistant.io/components/group/
+group:
+
+
+####################################################
+#                DEVICE TRACKER                    #
+####################################################
+
+#https://www.home-assistant.io/integrations/device_tracker/
+device_tracker:
+  - platform: nmap_tracker
+    home_interval: 3
+    hosts: 
+      - !secret ball_device
+      - !secret peamai_device
+
+device_tracker:
+  - platform: bluetooth_tracker
+####################################################
+#                   PERSON                         #
+####################################################
+
+#https://www.home-assistant.io/components/person/
+person:
+  - name: Ball
+    id: ball
+    device_trackers:
+      - device_tracker.ball_phone  #WiFi
+      - device_tracker.ball_phone_2 #GPS
+  - name: Peamai
+    id: peamai
+    device_trackers:
+      - device_tracker.peamai_phone #WiFi
+      - device_tracker.peamai_phone_2 #GPS
+
+####################################################
+#                    ASUS WRT                      #
+####################################################
+
+#https://www.home-assistant.io/integrations/asuswrt/
+asuswrt:
+  host: !secret router_device
+  username: !secret ball_username
+  port: !secret asus_port
+  ssh_key: /config/id_rsa
+  sensors:
+    - upload
+    - download
+    - upload_speed
+    - download_speed
+
+####################################################
+#                      IFTTT                       #
+####################################################
+
+#https://www.home-assistant.io/integrations/ifttt/
+ifttt:
+  key: !secret ifttt_key
