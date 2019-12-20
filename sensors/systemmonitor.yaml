@@ -1,0 +1,13 @@
+#https://home-assistant.io/components/sensor/
+
+####################################################
+#                                                  #
+#                 System Monitor                   #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/integrations/lastfm/
+  - platform: lastfm
+    api_key: !secret 7117872cce32805d5754ffccfec603d9
+    users:
+      - !secret lastfm_id      

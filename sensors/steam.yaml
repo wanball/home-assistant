@@ -1,0 +1,13 @@
+#https://home-assistant.io/components/sensor/
+
+####################################################
+#                                                  #
+#                      Steam                       #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/integrations/steam_online/
+  - platform: steam_online
+    api_key: !secret steam_api
+    accounts:
+      - !secret steam_id

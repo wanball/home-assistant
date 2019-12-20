@@ -1,0 +1,14 @@
+#https://home-assistant.io/components/sensor/
+
+####################################################
+#                                                  #
+#                    last.fm                       #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/integrations/systemmonitor/
+  - platform: systemmonitor
+    resources:
+      - type: disk_use_percent
+        arg: /
+      - type: memory_free

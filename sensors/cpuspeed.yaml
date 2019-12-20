@@ -1,0 +1,10 @@
+#https://home-assistant.io/components/sensor/
+
+####################################################
+#                                                  #
+#                   CPU speed                      #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/integrations/cpuspeed/
+  - platform: cpuspeed    

@@ -1,0 +1,19 @@
+#https://home-assistant.io/components/sensor/
+
+####################################################
+#                                                  #
+#                  QNAP Sensor                     #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/integrations/qnap/
+  - platform: qnap
+    host: !secret nas_host
+    username: !secret nas_user
+    password: !secret nas_user
+    monitored_conditions:
+      - status
+      - cpu_usage
+      - memory_percent_used
+      - network_tx
+      - volume_percentage_used 

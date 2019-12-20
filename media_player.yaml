@@ -1,0 +1,85 @@
+####################################################
+#                                                  #
+#                   MEDIA PLAYER                   #
+#                                                  #
+####################################################
+
+#https://www.home-assistant.io/integrations/androidtv/
+  - platform: androidtv
+    name: True TV
+    device_class: androidtv
+    host: !secret true_settopbox
+    adb_server_ip: 127.0.0.1
+    adb_server_port: 5037
+    apps:
+      com.amazon.tv.launcher: "Digital TV"
+      com.netflix.ninja: "Netflix"
+      com.amazon.firetv.youtube: "Youtube"
+    state_detection_rules:
+      'com.amazon.tv.launcher':
+        - 'standby'
+      'com.netflix.ninja':
+        - 'media_session_state'
+      'com.amazon.firetv.youtube':
+        - 'media_session_state'
+
+#https://www.home-assistant.io/integrations/lg_netcast/
+  - platform: lg_netcast
+    host: !secret tv_device
+    mac: !secret tv_device_mac
+    name: LG Tv
+    access_token: !secret mediaplayer_tvlg
+
+#https://www.home-assistant.io/integrations/spotify/    
+  - platform: spotify
+    client_id: !secret spotify_id
+    client_secret: !secret spotify_password
+
+#https://github.com/smartHomeHub/SmartIR
+media_player:
+  - platform: smartir
+    name: Smartir_TV
+    unique_id: smartir_tv
+    device_code: 1004
+    controller_data: !secret broadlink_rm_pro_ip
+    power_sensor: binary_sensor.tv_power
+
+#https://www.home-assistant.io/integrations/universal/
+  - platform: universal
+    name: main_tv
+    children:
+      - media_player.true_tv
+      - media_player.lg_tv
+      - media_player.smartir_tv
+    commands:
+      turn_on:
+        service: media_player.turn_on
+        data:
+          entity_id: media_player.smartir_tv
+      turn_off:
+        service: media_player.turn_off
+        data:
+          entity_id: media_player.lg_tv
+      volume_up:
+        service: media_player.volume_up
+        data:
+          entity_id: media_player.lg_tv
+      volume_down:
+        service: media_player.volume_down
+        data:
+          entity_id: media_player.lg_tv
+      volume_mute:
+        service: media_player.volume_mute
+        data:
+          entity_id: media_player.lg_tv
+      select_source:
+        service: media_player.select_source
+        data_template:
+          entity_id: media_player.receiver
+          source: '{{ source }}'
+
+####################################################
+#                                                  #
+#           END OF CONFIGURATION FILE              #
+#                                                  #
+####################################################
